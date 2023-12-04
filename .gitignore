@@ -1,0 +1,32 @@
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock
+
+# IDE/Editor
+.vscode/
+.idea/
+
+# Build output
+dist/
+build/
+
+# Environment-specific files
+.env
+.env.local
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# User-specific files
+.DS_Store
+Thumbs.db
+
+# Dependency-specific files
+yarn-error.log
+npm-debug.log
+
+# ESLint
+.eslintcache
+.eslintrc.cjs
