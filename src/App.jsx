@@ -1,11 +1,19 @@
+import React from 'react'
+// import Header from './Componets/Header/Header'
+// import Body from './Componets/Body/Body'
+import Footer from './Componets/Footer/Footer'
+import MainSection from './Componets/MainSection/MainSection'
 
-function App() {
-
+const App = () => {
   return (
-    <h1 className="text-2xl bg-slate-400">
-      Hello world!
-    </h1>
-  );
+    <div>
+    {/* <Header/>
+    <Body/> */}
+    <MainSection/>
+    <Footer/>
+
+    </div>
+  )
 }
 
 export default App
