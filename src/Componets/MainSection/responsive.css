@@ -1,0 +1,11 @@
+.cont {
+  width: 100%;
+}
+@media (max-width: 979px) {
+  .navbar {
+    border: 2px solid white;
+  }
+  .navbar > ul {
+    display: none;
+  }
+}
