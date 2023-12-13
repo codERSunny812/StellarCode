@@ -1,0 +1,11 @@
+@media (max-width: 768px){
+
+    .footer{
+        /* border:2px solid black; */
+    }
+   li{
+        /* border: 2px solid firebrick; */
+        font-size: 10px;
+        /* padding: 0 1px; */
+    }
+}
