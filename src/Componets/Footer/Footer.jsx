@@ -5,7 +5,7 @@ import './responsive.css'
 const Footer = () => {
   return (
     <>
-    <div className="footer flex  flex-col items-center capitalize">
+    <div className="footer flex  flex-col items-center capitalize mx-4 px-4">
         <h3 className=' text-center'>Copyright © 2023 LeetCode</h3>
         <ul className='flex'>
           <li className='px-2'>help centre|</li>

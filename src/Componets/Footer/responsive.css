@@ -2,6 +2,9 @@
 
     .footer{
         /* border:2px solid black; */
+        padding: 12px 0;
+        margin: 12px 0;
+    
     }
    li{
         /* border: 2px solid firebrick; */
