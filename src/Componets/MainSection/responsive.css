@@ -1,7 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
 body{
     width: 100%;
+    margin: 0;
 }
+
+.cont {
+    /* border: 2px solid blueviolet; */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    max-width: 100%; /* Ensure that the container doesn't exceed the viewport width */
+    margin: 0 auto; /* Center the container */
+   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 68%);
+}
+
 .navbar{
     /* border: 2px solid yellow; */
     padding: 1px;
@@ -38,9 +48,19 @@ body{
     /* border: 2px solid darkgoldenrod; */
     width: fit-content;
   }
-@media (max-width: 768px) {
-  .navbar {
-    /* border: 2px solid white; */
+
+  .section2{
+    margin: 3px 0;
+    padding: 3px 4px;
+    clip-path: polygon(0 29%, 100% 0, 100% 68%, 0 100%);
+
+
+
+  }
+@media (max-width: 968px)  {
+ 
+  .cont{
+    width: 100%;
   }
   .navbar > ul {
     display: none;
@@ -53,6 +73,10 @@ body{
     /* border: 2px solid darkblue; */
     align-items: center;
     justify-content: center;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+
+    
+
   }
   .section1_animation{
     display:none;
@@ -79,10 +103,13 @@ body{
   .section1_content button{
     /* border: 2px solid darkgoldenrod; */
     width: fit-content;
+   
   }
 
   .section2{
     /* border: 3px solid black; */
+    clip-path: none;
+    background: none;
     flex-direction: column-reverse;
   }
 
@@ -126,6 +153,7 @@ body{
 
 .section3{
     /* border:2px solid firebrick; */
+    	background-color: #edf2f7;
 }
 
 .section3_text_content{

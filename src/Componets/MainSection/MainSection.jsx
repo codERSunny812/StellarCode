@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 const Section1 = () => {
   return (
     <>
-      <div className=" section1 flex p-12   justify-between">
+      <div className="mb-3 section1 flex p-16   justify-between">
         <Lottie animationData={ipad} className="h-96 section1_animation" />
         <div className="section1_content text  flex flex-col  justify-center items-center capitalize">
           <h1 className="text-white font-bold h-[44px] w-[520px] text-center text-4xl font-poppins">
@@ -23,9 +23,12 @@ const Section1 = () => {
             leetcode is the best platform to help you enhance your skills,
             expand your knowledge and prepare for technical interview.{" "}
           </p>
-          <button className="bg-[#17807d] px-3 py-2 m-5 rounded-full capitalize text-white hover:bg-[#0d4c4b] cursor-pointer ">
-            create account <span className="p-1"> {">"} </span>{" "}
-          </button>
+          <Link to='/status'>
+            <button className="bg-[#17807d] px-3 py-2 m-5 mb-11 rounded-full capitalize text-white hover:bg-[#0d4c4b] cursor-pointer ">
+              create account <span className="p-1"> {">"} </span>{" "}
+            </button>
+          </Link>
+         
         </div>
       </div>
     </>
@@ -35,7 +38,7 @@ const Section1 = () => {
 const Section2 = () => {
   return (
     <>
-      <div className=" section2 flex items-center justify-center">
+      <div className= section2 h-screen flex items-center justify-center bg-gray-200 ">
         {/* section 2 text */}
         <div className="section2_contents">
           {/* heading */}
@@ -60,7 +63,7 @@ const Section2 = () => {
         </div>
         {/* section 2 animation */}
         <div className="anim">
-          <Lottie animationData={coding} />
+          <Lottie animationData={coding} className="h-auto w-80"  />
         </div>
       </div>
     </>
@@ -70,7 +73,7 @@ const Section2 = () => {
 const Section3 = () => {
   return (
     <>
-      <div className=" section3 flex flex-col justify-center items-center">
+      <div className=" section3 flex flex-col justify-center items-center bg-gray-200">
         <div className=" section3_text_content mx-3 flex flex-col justify-center items-center p-4 m-2">
           <MdDeveloperMode className="w-16 h-16" style={{ color: "#1da09c" }} />
           <h2 className="  w-[945px] h-[33px] text-center capitalize font-extrabold text-[#1da09c] font-mono">
@@ -95,8 +98,8 @@ const Section3 = () => {
 const MainSection = () => {
   return (
     <>
-      <div className="  cont w-full  bg-gradient-to-br from-gray-900 via-gray-600 to-blue-gray-900">
-        <div className="navbar flex flex-col md:flex-row justify-between">
+      <div className="cont w-full  bg-gradient-to-br from-gray-900 via-gray-600 to-blue-gray-900">
+        <div className=" navbar flex flex-col md:flex-row justify-between">
           <div className="flex items-center capitalize">
             <Link to='/'>
             <img src={Logo} alt="" className="h-12 logo" />
@@ -120,9 +123,11 @@ const MainSection = () => {
               <li className="px-2 hover:bg-white p-1 rounded-2xl cursor-pointer text-black">
                 developer
               </li>
+              <Link to='/login'>
               <li className="px-2 hover:bg-white p-1 rounded-2xl cursor-pointer text-black">
                 sign in
               </li>
+              </Link>
             </ul>
           </div>
         </div>
