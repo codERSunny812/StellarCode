@@ -1,0 +1,7 @@
+@media (max-width:768px){
+#username,#email,#password,#confirmPassword{
+    /* border: 2px solid red; */
+    width: 310px;
+    margin: auto;
+}
+}

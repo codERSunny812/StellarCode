@@ -1,8 +1,17 @@
-import React from 'react'
+import React,{useState}from 'react'
+import Signup from './Signup';
+import Login from './Login';
 
 const Auth = () => {
+  const[isLoggedIn , setUserLoggedIn] = useState(false);
+
+  const AuthStats = () =>{
+    setUserLoggedIn(true);
+  }
   return (
-    <div>Auth</div>
+
+    isLoggedIn? <Login/> : <Signup handleStatus = { AuthStats }/>
+    
   )
 }
 

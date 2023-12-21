@@ -3,6 +3,7 @@ import Logo from "../../assets/LeetCode_logo.png";
 import { FaGithub } from "react-icons/fa6";
 import { FaGooglePlus } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -10,7 +11,9 @@ const Login = () => {
     <div>
           <div className="h-screen w-full  bg-[#eceff1] flex justify-center items-center">
               <div className="  flex flex-col gap-3 items-center bg-white w-[400px] h-fit">
+                <Link to='/'>
                   <img src={Logo} alt="leetcode logo" className="h-20 my-6" />
+                  </Link>
                   <h1 className="font-mono text-lg capitalize">leetcode</h1>
 
                   <input
@@ -33,12 +36,18 @@ const Login = () => {
                   <button className="capitalize  w-[340px] h-[41px] bg-gradient-to-r from-gray-600 via-slate-500 to-gray-400 text-white my-2">sign up</button>
 
                   <div className="capitalize  w-[340px] h-[41px] flex justify-between">
-                      <h3 className=' text-blue-400 my-2 '>
-                        forget password
-                      </h3>
-                      <h3 className=' text-blue-400 my-2 '>
-                         sign up
-                      </h3>
+                    <Link to='/forgotpassword'>
+              <h3 className=' text-blue-400 my-2 '>
+                forget password
+              </h3>
+                    </Link>
+                    <Link to='/signup'>
+              <h3 className=' text-blue-400 my-2 '>
+                sign up
+              </h3>
+                    </Link>
+                     
+                     
 
                   </div>
                  
