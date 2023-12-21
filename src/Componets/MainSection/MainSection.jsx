@@ -38,7 +38,7 @@ const Section1 = () => {
 const Section2 = () => {
   return (
     <>
-      <div className= section2 h-screen flex items-center justify-center bg-gray-200 ">
+      <div className= "section2 h-screen flex items-center justify-center bg-gray-200 ">
         {/* section 2 text */}
         <div className="section2_contents">
           {/* heading */}
