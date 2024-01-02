@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import Logo from "../../assets/LeetCode_logo.png";
 import { FaGithub } from "react-icons/fa6";
 import { FaGooglePlus } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import {supabase} from '../../supabase'
 import './responsive.css';
+import {auth} from '../../supabase'
 
 const Signup = ({ handleStatus }) => {
   // state variables 
@@ -13,11 +13,15 @@ const Signup = ({ handleStatus }) => {
   const[password,setPassword] = useState("");
 
   // console.log(props);
-console.log(handleStatus);
-  const AuthStatsHandle = () =>{
+// console.log(handleStatus);
 
-    signUpNewUser();
+  const AuthStateHandle = () =>{
+
+    
     console.log("sign up  button is clicked ");
+    
+    newUserSignUp();
+
     const handleAuthStats = () => {
       handleStatus();
     }
@@ -26,16 +30,22 @@ console.log(handleStatus);
     
   }
 
-  // sign up of the user
-  const signUpNewUser = async () => {
-    const {data,error} = await supabase.auth.signUp({
-     email:email,
-     password:password,
-     option:{
-       emailRedirectTo:"www.google.com"
-     }
-    })
+  // new user sign up 
+  const newUserSignUp = async () => {
+
+    try {
+      const {data,error} = await auth.signUp({
+        email:email,
+        password:password
+      })
+    } 
+    catch (error) {
+      console.error('Error:', error.message);
+    }
+
   }
+
+ 
   return (
     <>
       <div className="h-fit w-full  bg-[#eceff1] flex justify-center">
@@ -79,7 +89,7 @@ console.log(handleStatus);
             id="confirmPassword"
           />
           
-          <button className="capitalize  w-[340px] h-[42px] bg-gradient-to-r from-gray-600 via-slate-500 to-gray-400 text-white my-2 py-2 rounded-sm" onClick={AuthStatsHandle}>
+          <button className="capitalize  w-[340px] h-[42px] bg-gradient-to-r from-gray-600 via-slate-500 to-gray-400 text-white my-2 py-2 rounded-sm" onClick={AuthStateHandle}>
             sign up
           </button>
 
