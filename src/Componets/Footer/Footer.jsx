@@ -1,4 +1,3 @@
-import React from 'react'
 import india from '../../assets/India.png'
 import './responsive.css'
 
