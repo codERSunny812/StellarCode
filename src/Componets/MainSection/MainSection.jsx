@@ -1,4 +1,3 @@
-import React from "react";
 import Logo from "../../assets/LeetCode_logo.png";
 import Lottie from "lottie-react";
 import ipad from "./ipad.json";
