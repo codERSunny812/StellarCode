@@ -1,5 +1,6 @@
 import { Button } from '@chakra-ui/react'
 import Logo from '../assets/LeetCode_logo.png'
+import { Link } from 'react-router-dom'
 
 
 const TopBar = () => {
@@ -8,7 +9,10 @@ const TopBar = () => {
           <div className=" w-full bg-[#282828]">
     <div className="flex items-center justify-between">
      <div className="logo">
-        <img src={Logo}/>
+        <Link to='/'>
+            <img src={Logo} />
+        </Link>
+      
      </div>
      <div className="buttonAndLogin px-3 mx-2">
         <Button
