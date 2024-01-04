@@ -6,6 +6,7 @@ import Login from './Componets/Auth/Login'
 import ForgetPassowrd from './Componets/Auth/ForgetPassowrd'
 import Auth from './Componets/Auth/Auth'
 import Home from './Pages/Home'
+import Profile from './Pages/Profile'
 // import HomeRouter from './Pages/Home'
 
 const App = () => {
@@ -42,6 +43,10 @@ const AppRouter = createBrowserRouter([
    path:'/home',
   //  element:<RouterProvider router={HomeRouter} /> 
   element:<Home/>
+  },
+  {
+    path:'/profile',
+    element:<Profile/>
   }
 ])
 
