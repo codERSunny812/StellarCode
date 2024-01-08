@@ -6,13 +6,16 @@ import Login from './Componets/Auth/Login'
 import ForgetPassowrd from './Componets/Auth/ForgetPassowrd'
 import Auth from './Componets/Auth/Auth'
 import Home from './Pages/Home'
-import Profile from './Pages/Profile'
+import Profile from './Utils/Profile'
+import ProblemsQuestion from './Utils/ProblemsQuestion'
+
 // import HomeRouter from './Pages/Home'
 
 const App = () => {
   return (
     <div>
     <MainSection/>
+  
     <Footer/>
     </div>
   )
@@ -47,7 +50,13 @@ const AppRouter = createBrowserRouter([
   {
     path:'/profile',
     element:<Profile/>
+  },
+  {
+   path:'/problems/:id',
+   element:<ProblemsQuestion/>
   }
 ])
+
+
 
 export default AppRouter;
