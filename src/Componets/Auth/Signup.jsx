@@ -9,6 +9,9 @@ import "./responsive.css";
 import { auth } from "../../supabase";
 import { SessionContext } from "../../Context/AuthContext";
 import   {useNavigate} from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Signup = ({ handleStatus }) => {
   // state variables
@@ -17,17 +20,30 @@ const Signup = ({ handleStatus }) => {
   const [reEnterPassword, setReEnterPassword] = useState("");
   const [userName, setUserName] = useState("");
 
+  // button state
+  const[isDisable,setIsDisable] = useState(true);
+
+  // function to enable/disable the sign-up button
+  const handleButtonDisable = () => {
+    setIsDisable(!(userEmail && userPassword && reEnterPassword && userName));
+  };
+
+  
+
+  // hooks for navigation 
   const HomeNaigate = useNavigate();
   
-  // logic for signup of the user
-
+  // function to change the state of the component
   const handleAuthState = () => {
     handleStatus();
   };
 
+
+  // function for user signUp
   const AuthStateHandle = () => {
     console.log("user sign up button is clicked");
-
+    
+    // function defination of user signup with  mail
     const signUpNewUser = async () => {
       try {
         // login logic
@@ -53,15 +69,10 @@ const Signup = ({ handleStatus }) => {
       }
     };
 
-    // function  to handle the auth status
-  
-
-    // function for signup the user
+    //function call for signup and state change
     signUpNewUser();
     handleAuthState();
-  };
-
-
+  }
 
   // signup using github
   const signUpUsingGitHub = async () => {
@@ -81,10 +92,6 @@ const Signup = ({ handleStatus }) => {
 
       HomeNaigate('/home');
        
-
-
-      
-
 
     } catch (error) {
       // error handle 
@@ -116,8 +123,6 @@ const Signup = ({ handleStatus }) => {
 
   }
 
-
-
   const signUpState = useContext(SessionContext);
   console.log(signUpState);
 
@@ -137,7 +142,11 @@ const Signup = ({ handleStatus }) => {
             className="my-2 p-2 w-[340px] h-[41px]  border border-slate-200 hover:border-black  rounded-md outline-orange-300 outline-offset-2 placeholder:capitalize"
             id="username"
             value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={(e) => {
+              setUserName(e.target.value);
+              handleButtonDisable();
+            
+            }}
           />
           <input
             type="email"
@@ -146,7 +155,10 @@ const Signup = ({ handleStatus }) => {
             placeholder:capitalize
             "
             value={userEmail}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              handleButtonDisable();
+            }}
             id="email"
           />
           <input
@@ -156,7 +168,11 @@ const Signup = ({ handleStatus }) => {
             placeholder:capitalize
             "
             value={userPassword}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              handleButtonDisable();
+            
+            }}
             id="password"
           />
           <input
@@ -166,19 +182,40 @@ const Signup = ({ handleStatus }) => {
             placeholder:capitalize
             "
             value={reEnterPassword}
-            onChange={(e) => setReEnterPassword(e.target.value)}
+            onChange={(e) => {
+              setReEnterPassword(e.target.value);
+              handleButtonDisable();
+            }}
             id="confirmPassword"
           />
-
+          <ToastContainer/>
+        
           <button
             className="capitalize  w-[340px] h-[42px] bg-gradient-to-r from-gray-600 via-slate-500 to-gray-400 text-white my-2 py-2 rounded-sm"
-            onClick={AuthStateHandle}
+            onClick={() => {
+              // Check if passwords match
+              if (userPassword !== reEnterPassword) {
+                // Show Toastify notification for password mismatch
+                toast.warn("Passwords don't match", {
+                  position: 'bottom-left',
+                  autoClose: 3000,
+                  theme: 'dark',
+                  hideProgressBar:false,
+                  draggable:true,
+                 
+                });
+                return; // Stop further execution
+              }
+
+              // Proceed with signup logic
+              AuthStateHandle();
+            }}
+            disabled={isDisable}
           >
             sign up
           </button>
 
-          {/* react toasify message */}
-          {signUpState == 1 && <h1>hello</h1>}
+      
 
           <h3 className=" text-gray-400 my-2 ">
             Have an account?{" "}
