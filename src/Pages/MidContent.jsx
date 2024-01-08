@@ -6,7 +6,8 @@ import { FcCancel } from "react-icons/fc";
 import { PiYoutubeLogoFill } from "react-icons/pi";
 import { IoMdCloseCircle } from "react-icons/io";
 
-import YoutubeEmbed from "../Componets/YoutubeEmbed";
+import YoutubeEmbed from "../Componets/YoutubeModal/YoutubeEmbed";
+import { Link } from "react-router-dom";
 
 const MidContent = () => {
   const [modalVisibile, setIsVisible] = useState(false);
@@ -60,9 +61,15 @@ const MidContent = () => {
                     <td className="p-4 mx-5 flex items-center justify-center">
                       <FcCancel />
                     </td>
-                    <td className="p-4 mx-5 text-center hover:text-blue-500 ">
-                      {items.title}
-                    </td>
+                    {/* <Link to='/problems/{items.id}'> */}
+                      <td className="p-4 mx-5 text-center hover:text-blue-500 ">
+                      <Link to={`/problems/${items.id}`}>
+                        {items.title}
+                        </Link>
+                       
+                      </td>
+                    {/* </Link> */}
+                    
                     <td
                       className="p-4 mx-5 text-center"
                       style={{ color: questionColor }}
