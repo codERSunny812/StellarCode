@@ -9,6 +9,7 @@ import Home from './Pages/Home'
 import Profile from './Utils/Profile'
 import ProblemsQuestion from './Utils/ProblemsQuestion'
 
+
 // import HomeRouter from './Pages/Home'
 
 const App = () => {
@@ -43,7 +44,7 @@ const AppRouter = createBrowserRouter([
     element: <ForgetPassowrd />
   },
   {
-   path:'/home',
+   path:'/problemset',
   //  element:<RouterProvider router={HomeRouter} /> 
   element:<Home/>
   },
