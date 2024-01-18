@@ -16,11 +16,19 @@ body,html{
     display: flex;
     flex-direction: row;
 }
+.split2{
+     display: flex;
+    flex-direction:column;
+}
 
 .gutter {
-    background-color: #eee;
+    background-color:black;
     background-repeat: no-repeat;
     background-position: 50%;
+    
+}
+.gutter:hover{
+    background-color :gray;
 }
 
 .gutter.gutter-horizontal {
@@ -30,5 +38,7 @@ body,html{
 
 .gutter.gutter-vertical {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
-    cursor: row-resize;
+     cursor: row-resize; 
+    
+     /* cursor:col-resize; */
 }
