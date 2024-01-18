@@ -4,8 +4,8 @@ import { FaRegStar } from "react-icons/fa";
 const Problem = () => {
     return (
         <>
-            <div className="h-screen  bg-black text-white">
-                <div className="w-full  ">
+            <div className="h-fit w-full  bg-black text-white ">
+                <div className="">
                     <div className="top mt-2">
                         <h1 className="bg-[#282828] w-fit px-3 pt-1 rounded-t-xl capitalize">
                             description

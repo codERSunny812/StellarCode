@@ -1,4 +1,3 @@
-import React from "react";
 import Split from "react-split";
 import Problem from "./ProblemDescription/Problem";
 import CodeSection from "./CodeSection/CodeSection";
@@ -14,6 +13,7 @@ const Question = () => {
       <Problem />
       <CodeSection />
     </Split>
+    
   );
 };
 
