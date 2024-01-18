@@ -1,22 +1,21 @@
 import Logo from "../../assets/LeetCode_logo.png";
 import { FaGithub } from "react-icons/fa6";
-import { FaGooglePlus } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
+import { FaGooglePlus, FaLinkedin } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { auth } from "../../supabase";
 
+// sign in of the user logic
 const Login = () => {
-  // sign in of the user logic
+ 
 
   const [userEmail, setEmail] = useState("");
   const [userPassword, setPassword] = useState("");
-
   const HomeNavigation = useNavigate();
   
 
   // login logic of the user
-  const userLogIn = async() =>{
+  const userLogIn = async () =>{
     try {
       const { data, error } = await auth.signInWithPassword({
         email: userEmail,
@@ -25,34 +24,32 @@ const Login = () => {
 
       if(!error){
         console.log( data + "user is successfully login ");
+        HomeNavigation('/problemset');
       }else{
         console.log(error);
       }
-
-
     } catch (error) {
       console.log(error);
     }
-    HomeNavigation('/home')
+   
 
      
   }
+
   //  login using github
   const signInWithGithub = async()=>{
     try {
       //login using github
-      const { data, error } = auth.signInWithOAuth({
+      const { data, error } = await auth.signInWithOAuth({
         provider: 'github',
       });
 
       if (!error) {
         console.log("successfully login using github");
+        HomeNavigation('/home');
       } else {
         console.log("error in the signing up of the function")
       }
-      HomeNavigation('/home')
-
-
     } catch (error) {
       // error handle 
       console.log(error)
@@ -72,7 +69,7 @@ const Login = () => {
           <input
             type="email"
             placeholder="email"
-            className="my-2 p-2 w-[340px] h-[41px] capitalize border border-slate-200 rounded-md hover:border-black outline-orange-300 outline-offset-2"
+            className="my-2 p-2 w-[340px] h-[41px]  border border-slate-200 rounded-md hover:border-black outline-orange-300 outline-offset-2"
             value={userEmail}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -80,12 +77,13 @@ const Login = () => {
           <input
             type="password"
             placeholder="password"
-            className=" my-2 p-2 w-[340px] h-[41px] capitalize border border-slate-200 rounded-md hover:border-black  outline-orange-300 outline-offset-2"
+            className=" my-2 p-2 w-[340px] h-[41px]  border border-slate-200 rounded-md hover:border-black  outline-orange-300 outline-offset-2"
             value={userPassword}
             onChange={(e) => setPassword(e.target.value)}
           />
 
           <button
+          type="button"
             className="capitalize  w-[340px] h-[41px] bg-gradient-to-r from-gray-600 via-slate-500 to-gray-400 text-white my-2"
             onClick={userLogIn}
           >
@@ -105,7 +103,7 @@ const Login = () => {
           <div className="flex gap-5 ">
             <FaGithub className="h-7 w-7 icon-1 text-gray-600 hover:text-black my-2" onClick={signInWithGithub} />
             <FaGooglePlus className="h-7 w-7 text-gray-600 hover:text-red-500 my-2" />
-            <FaTwitter className="h-7 w-7 text-gray-600 hover:text-blue-400 my-2" />
+            <FaLinkedin className="h-7 w-7 text-gray-600 hover:text-blue-400 my-2" />
           </div>
 
           <h3 className="capitalize  text-gray-400 flex-wrap text-center text-sm  my-4">

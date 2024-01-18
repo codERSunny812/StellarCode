@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
+
+import { useContext, useState , useRef } from "react";
 import Logo from "../../assets/LeetCode_logo.png";
 import { FaGithub } from "react-icons/fa6";
-import { FaGooglePlus } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
+import { FaGooglePlus, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./responsive.css";
 import { auth } from "../../supabase";
@@ -11,16 +12,16 @@ import { SessionContext } from "../../Context/AuthContext";
 import   {useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+// import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 
 const Signup = ({ handleStatus }) => {
-  // state variables
+  // state variables for state management
   const [userEmail, setEmail] = useState("");
   const [userPassword, setPassword] = useState("");
   const [reEnterPassword, setReEnterPassword] = useState("");
   const [userName, setUserName] = useState("");
-
-  // button state
+  // const [captchaToken, setCaptchaToken] = useState();
   const[isDisable,setIsDisable] = useState(true);
 
   // function to enable/disable the sign-up button
@@ -28,10 +29,11 @@ const Signup = ({ handleStatus }) => {
     setIsDisable(!(userEmail && userPassword && reEnterPassword && userName));
   };
 
-  
-
   // hooks for navigation 
   const HomeNaigate = useNavigate();
+ 
+  //hooks for the captcha
+  // const captcha = useRef()
   
   // function to change the state of the component
   const handleAuthState = () => {
@@ -40,10 +42,10 @@ const Signup = ({ handleStatus }) => {
 
 
   // function for user signUp
-  const AuthStateHandle = () => {
-    console.log("user sign up button is clicked");
+  const AuthStateHandle = async () => {
+    console.log("user's sign up button is clicked");
     
-    // function defination of user signup with  mail
+    // function defination of user signup with  email
     const signUpNewUser = async () => {
       try {
         // login logic
@@ -53,6 +55,7 @@ const Signup = ({ handleStatus }) => {
           options: {
             data: {
               name: userName,
+              // captchaToken
             },
           },
         });
@@ -62,7 +65,7 @@ const Signup = ({ handleStatus }) => {
         } else {
           console.log("no error");
           console.log(data);
-          console.log(session);
+          // console.log(session);
         }
       } catch (error) {
         console.log(error);
@@ -70,7 +73,8 @@ const Signup = ({ handleStatus }) => {
     };
 
     //function call for signup and state change
-    signUpNewUser();
+     await signUpNewUser();
+    // captcha.current.resetCaptcha();
     handleAuthState();
   }
 
@@ -84,13 +88,14 @@ const Signup = ({ handleStatus }) => {
 
       if(!error){
         console.log("successfully login using github");
+        HomeNaigate('/problemset');
       }else{
         console.log("error in the signing up of the function")
       }
 
       console.log(data);
 
-      HomeNaigate('/home');
+      
        
 
     } catch (error) {
@@ -105,15 +110,16 @@ const Signup = ({ handleStatus }) => {
     try {
       //login using github
       const { data, error } = auth.signInWithOAuth({
-        provider: 'twitter',
+        provider: 'linkedin_oidc',
       });
 
       if (!error) {
-        console.log("successfully login using github");
+        console.log("successfully login using twitter");
+        HomeNaigate('/home');
       } else {
         console.log("error in the signing up of the function")
       }
-      HomeNaigate('/home')
+     
 
 
     } catch (error) {
@@ -131,7 +137,7 @@ const Signup = ({ handleStatus }) => {
       <div className="h-fit w-full  bg-[#eceff1] flex justify-center">
         <div className=" signUpCont  flex flex-col gap-3 items-center bg-white w-[400px] h-full ">
           <Link to="/">
-            <img src={Logo} alt="leetcode logo" className="h-20 my-6" />
+            <img src={Logo} alt="leetcode logo" className="h-20 my-3" />
           </Link>
 
           <h1 className="font-mono text-lg capitalize">leetcode</h1>
@@ -189,6 +195,12 @@ const Signup = ({ handleStatus }) => {
             id="confirmPassword"
           />
           <ToastContainer/>
+          {/* <HCaptcha
+            ref={captcha}
+            sitekey="893d3a06-abbf-4eb5-9395-3397e967182f"
+            onVerify={(token) => {setCaptchaToken(token) }}
+          /> */}
+
         
           <button
             className="capitalize  w-[340px] h-[42px] bg-gradient-to-r from-gray-600 via-slate-500 to-gray-400 text-white my-2 py-2 rounded-sm"
@@ -231,7 +243,7 @@ const Signup = ({ handleStatus }) => {
               onClick={signUpUsingGitHub}
             />
             <FaGooglePlus className="h-7 w-7 text-gray-600 hover:text-red-500 my-2" />
-            <FaTwitter className="h-7 w-7 text-gray-600 hover:text-blue-400 my-2" 
+            <FaLinkedin className="h-7 w-7 text-gray-600 hover:text-[#0A66C2] my-2" 
             onClick={signUpUsingTwitter} />
           </div>
 
