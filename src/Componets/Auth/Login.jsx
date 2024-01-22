@@ -4,61 +4,71 @@ import { FaGooglePlus, FaLinkedin } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { auth } from "../../supabase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // sign in of the user logic
 const Login = () => {
- 
-
   const [userEmail, setEmail] = useState("");
   const [userPassword, setPassword] = useState("");
   const HomeNavigation = useNavigate();
-  
 
   // login logic of the user
-  const userLogIn = async () =>{
+  const userLogIn = async () => {
+    
+    toast("Logging in", {
+      position: "top-center",
+      autoClose: 3000,
+      theme: "dark",
+      hideProgressBar:false,
+      draggable: true,
+      
+    });
+
     try {
       const { data, error } = await auth.signInWithPassword({
         email: userEmail,
-        password: userPassword
-      })
+        password: userPassword,
+      });
 
-      if(!error){
-        console.log( data + "user is successfully login ");
-        HomeNavigation('/problemset');
-      }else{
+      if (!error) {
+        console.log(data + "user is successfully login ");
+        //delay the navigation by 3 second
+        setTimeout(()=>{
+          HomeNavigation("/problemset");
+        },3000)
+      
+      } else {
         console.log(error);
       }
     } catch (error) {
       console.log(error);
     }
-   
-
-     
-  }
+  };
 
   //  login using github
-  const signInWithGithub = async()=>{
+  const signInWithGithub = async () => {
     try {
       //login using github
       const { data, error } = await auth.signInWithOAuth({
-        provider: 'github',
+        provider: "github",
       });
 
       if (!error) {
         console.log("successfully login using github");
-        HomeNavigation('/home');
+        HomeNavigation("/home");
       } else {
-        console.log("error in the signing up of the function")
+        console.log("error in the signing up of the function");
       }
     } catch (error) {
-      // error handle 
-      console.log(error)
+      // error handle
+      console.log(error);
     }
-  }
-
+  };
 
   return (
     <div>
+      <ToastContainer />
       <div className="h-screen w-full  bg-[#eceff1] flex justify-center items-center">
         <div className="  flex flex-col gap-3 items-center bg-white w-[400px] h-fit">
           <Link to="/">
@@ -83,7 +93,7 @@ const Login = () => {
           />
 
           <button
-          type="button"
+            type="button"
             className="capitalize  w-[340px] h-[41px] bg-gradient-to-r from-gray-600 via-slate-500 to-gray-400 text-white my-2"
             onClick={userLogIn}
           >
@@ -101,7 +111,10 @@ const Login = () => {
 
           <h4 className="text-gray-400 my-2">our you can signin in with </h4>
           <div className="flex gap-5 ">
-            <FaGithub className="h-7 w-7 icon-1 text-gray-600 hover:text-black my-2" onClick={signInWithGithub} />
+            <FaGithub
+              className="h-7 w-7 icon-1 text-gray-600 hover:text-black my-2"
+              onClick={signInWithGithub}
+            />
             <FaGooglePlus className="h-7 w-7 text-gray-600 hover:text-red-500 my-2" />
             <FaLinkedin className="h-7 w-7 text-gray-600 hover:text-blue-400 my-2" />
           </div>

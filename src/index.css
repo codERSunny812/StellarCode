@@ -42,3 +42,16 @@ body,html{
     
      /* cursor:col-resize; */
 }
+
+.text-green {
+  color: green;
+}
+
+.text-yellow {
+  color: yellow;
+}
+
+.text-red {
+  color: red;
+}
+

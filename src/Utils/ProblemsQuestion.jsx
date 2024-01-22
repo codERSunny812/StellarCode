@@ -1,24 +1,24 @@
-import { useState } from 'react'
-import TopBar from '../Pages/TopBar'
-import Question from '../Componets/WorkSpace/Question';
-
-
+import { useState } from "react";
+import TopBar from "../Pages/TopBar";
+import Question from "../Componets/WorkSpace/Question";
 
 const ProblemsQuestion = () => {
-    const[isTimerVisible,setTimerVisible]=useState(true);
-    
+  const [isTimerVisible, setTimerVisible] = useState(true);
   
-   
 
-    const handleClockStatus=()=>{
-        isTimerVisible ? setTimerVisible(false) : setTimerVisible(true)
-    }
+  const handleClockStatus = () => {
+    isTimerVisible ? setTimerVisible(false) : setTimerVisible(true);
+  };
   return (
     <>
-    <TopBar  boolValue={true}  isTimerVisible={isTimerVisible}  handleClockStatus={handleClockStatus}/>
-    <Question/>
+      <TopBar
+        boolValue={true}
+        isTimerVisible={isTimerVisible}
+        handleClockStatus={handleClockStatus}
+      />
+      <Question />
     </>
-  )
-}
+  );
+};
 
-export default ProblemsQuestion
+export default ProblemsQuestion;

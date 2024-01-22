@@ -8,14 +8,17 @@ import { SessionContextProvider } from './Context/AuthContext'
 import { LangContextProvider } from './Context/LangContext'
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ChakraProvider>
+     
       <SessionContextProvider>
         <LangContextProvider>
           <RouterProvider router={AppRouter} />
         </LangContextProvider>
       </SessionContextProvider>
+     
     </ChakraProvider>
    
   </React.StrictMode>,

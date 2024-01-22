@@ -8,20 +8,21 @@ import { FaBars } from "react-icons/fa6";
 import { FcAlarmClock } from "react-icons/fc";
 import Stopwatch from "../Componets/Timer/Stopwatch";
 import { auth } from "../supabase";
-import { useEffect } from "react";
-// import { SessionContext } from "../Context/AuthContext";
-import { FaRegUserCircle } from "react-icons/fa";
+import { useContext, useEffect } from "react";
+import { FcBusinessman } from "react-icons/fc";
 import { useState } from "react";
 import UserStatusDropDown from "../Componets/DropDown/UserStatusDropDown";
+import { problems } from './constant'
 
 const TopBar = ({ boolValue, isTimerVisible, handleClockStatus }) => {
   const [userState, setUserState] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
 
+ 
+
   // check the status of the user's
   useEffect(() => {
     getLoginState();
-    
   }, []);
 
   const getLoginState = async () => {
@@ -39,33 +40,34 @@ const TopBar = ({ boolValue, isTimerVisible, handleClockStatus }) => {
     return () => unsubscribe();
   };
 
-  // console.log(userState);
-
   const handleMouseClick = () => {
     {
-      showDropDown ? setShowDropDown(false) : setShowDropDown(true)
+      showDropDown ? setShowDropDown(false) : setShowDropDown(true);
     }
-   
   };
 
 
+
+  // console.log(Problem.id)
   return (
     <>
       <div className=" w-full bg-[#282828] sticky top-0">
         <div className="flex items-center justify-between">
           <div className="logo">
-            <Link to="/">
-              <img src={Logo}  className="md:h-[48px] md:w-[48px] h-10"/>
+            <Link>
+              <img src={Logo} className="md:h-[48px] md:w-[48px] h-10" />
             </Link>
           </div>
 
           <div className=" flex items-center justify-center">
             {boolValue ? (
               <div className="flex items-center justify-center px-3 py-1">
-                <GrFormPrevious
-                  color="white"
-                  className="h-7 w-7 bg-[#464646] mx-2 rounded-sm cursor-pointer"
-                />
+                <Link to={`/problemset/:${problems.order}`}>
+                  <GrFormPrevious
+                    color="white"
+                    className="h-7 w-7 bg-[#464646] mx-2 rounded-sm cursor-pointer"
+                  />
+                </Link>
                 <Link to="/problemset">
                   <FaBars color="white" />
                 </Link>
@@ -76,6 +78,7 @@ const TopBar = ({ boolValue, isTimerVisible, handleClockStatus }) => {
                 <GrFormNext
                   color="white"
                   className="h-7 w-7 bg-[#464646] mx-2 rounded-sm cursor-pointer"
+                  
                 />
               </div>
             ) : null}
@@ -91,20 +94,23 @@ const TopBar = ({ boolValue, isTimerVisible, handleClockStatus }) => {
             ) : null}
           </div>
 
-          <div className="border-2 border-white buttonAndLogin md:px-3 md:mx-2 flex items-center">
-            <Button backgroundColor="#3E3D3D" color="orange" className="md:w-[143px] md:h-[40px] w-[120px]  md:text-[16px] ">
+          <div className=" buttonAndLogin md:px-3 md:mx-2 flex items-center">
+            <Button
+              backgroundColor="#3E3D3D"
+              color="orange"
+              className="md:w-[143px] md:h-[40px] w-[120px]  md:text-[16px] "
+            >
               buy me a coffe
             </Button>
 
-            <div
-              onClick={handleMouseClick}
-            >
+            <div onClick={handleMouseClick}>
               {userState ? (
                 <>
-                  <FaRegUserCircle color="white" className="h-8 w-8 mx-2" />
-                  {
-                    showDropDown && <UserStatusDropDown/>
-                  }
+                  <FcBusinessman
+                    color="white"
+                    className="h-8 w-8 mx-2 cursor-pointer"
+                  />
+                  {showDropDown && <UserStatusDropDown />}
                 </>
               ) : (
                 <Link to="/login">
