@@ -23,23 +23,31 @@ const Profile = () => {
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    getName();
-    getRank();
-    getEasyQuestion();
-    getMediumQuestion();
-    getHardQuestion();
-    getTotalSolved();
-    getStreak();
     getUserData();
+    getName();
+ 
+    // getRank();
+    // getEasyQuestion();
+    // getMediumQuestion();
+    // getHardQuestion();
+    // getTotalSolved();
+    // getStreak();
+   
   }, []);
 
+ 
+       
+ 
+
+  // function to get the userName of the user
   const getUserData = async () => {
-    const {
-      data: { user },
-    } = await auth.getUser();
-    setUserName(user.user_metadata.name);
-    console.log(user.user_metadata.name);
+    const data = await auth.getSession();
+    // console.log(data);
+    setUserName(data?.data?.session?.user?.user_metadata?.name);
+   console.log("user name is :" + userName);
   };
+
+ 
 
   const getName = async () => {
     const options = {
@@ -54,7 +62,7 @@ const Profile = () => {
     try {
       const response = await axios.request(options);
       setName(response?.data);
-      console.log(response.data);
+      console.log(" the name of the user is:" +response.data);
     } catch (error) {
       console.error(error);
     }
@@ -72,7 +80,7 @@ const Profile = () => {
 
     try {
       const response = await axios.request(options);
-      console.log(response?.data);
+      console.log("the rank of the user is " +response?.data);
       setRank(response.data);
     } catch (error) {
       console.error(error);
@@ -106,7 +114,7 @@ const Profile = () => {
 
     try {
       const response = await axios?.request(options);
-      console.log(response.data);
+      console.log("the no of easy question is :"+response.data);
       setEasyQuestion(response?.data);
     } catch (error) {
       console.error(error);
@@ -125,7 +133,7 @@ const Profile = () => {
 
     try {
       const response = await axios?.request(options);
-      console.log(response.data);
+      console.log("the no of medium question  solved:" +response.data);
       setMediumQuestion(response?.data);
     } catch (error) {
       console.error(error);
@@ -144,7 +152,7 @@ const Profile = () => {
 
     try {
       const response = await axios?.request(options);
-      console.log(response.data);
+      console.log("the no of hard questin solved:" +response.data);
       setHardQuestion(response?.data);
     } catch (error) {
       console.error(error);
@@ -163,7 +171,7 @@ const Profile = () => {
 
     try {
       const response = await axios?.request(options);
-      console.log(response.data);
+      console.log("the total solved question "+ response.data);
       setTotalSolved(response?.data);
     } catch (error) {
       console.error(error);
@@ -182,7 +190,7 @@ const Profile = () => {
 
     try {
       const response = await axios.request(options);
-      console.log(response.data);
+      console.log("streak:"+response.data);
       setStreak(response.data);
     } catch (error) {
       console.error(error);

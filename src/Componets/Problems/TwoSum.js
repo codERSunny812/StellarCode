@@ -5,17 +5,16 @@ export const TwoSum = {
     problemStatement:`<div class="questionSummary mx-2 my-1 font-medium text-base">
               <h1 class="px-3 my-4 ">
                 Given an array of integers
-                <span class="border border-gray-600 bg-[#1b1b1b]  px-1  rounded-md text-gray-400 mx-1">
+                <span class="border border-gray-600 bg-[#1b1b1b]  px-1 py-[1px] text-center  rounded-md text-gray-400 mx-1">
                   nums
                 </span>
                 and integer
-                <span class="border border-gray-600 bg-[#1b1b1b]  px-1  rounded-md text-gray-400">
+                <span class="border border-gray-600 bg-[#1b1b1b]  px-1 py-[1px] text-center  rounded-md text-gray-400">
                   target
                 </span>
                 , return indices of the two numbers such that they add up to
-                <span class="border border-gray-600 bg-[#1b1b1b]  px-1  rounded-md text-gray-400 mx-2">
-                   
-                  target.
+                <span class="border border-gray-600 bg-[#1b1b1b]  px-1  rounded-md text-gray-400 mx-2 py-[1px]">
+                  target
                 </span>
                 .
               </h1>

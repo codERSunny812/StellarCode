@@ -10,13 +10,19 @@ const UserStatusDropDown = () => {
     getUserData();
   }, []);
 
-  const getUserData = async () => {
-    const {
-      data: { user },
-    } = await auth.getUser();
-    setUserName(user.user_metadata.name);
-    // console.log(user.user_metadata.name);
-  };
+  // const getUserData = async () => {
+  //   const {
+  //     data: { user },
+  //   } = await auth.getUser();
+  //   console.log(user?.user_metadata?.name);
+  //   setUserName(user?.user_metadata?.name);
+  // };
+
+  const getUserData = async()=>{
+   const data = await auth.getSession();
+   console.log(data.data.session.user.user_metadata.name);
+    setUserName(data.data.session.user.user_metadata.name);
+  }
 
   const handleSignOut = async () => {
     try {
@@ -38,7 +44,7 @@ const UserStatusDropDown = () => {
   };
   return (
     <>
-      <div className=" text-white absolute h-fit w-56 right-1 top-14 bg-[#282828] px-3 py-3 capitalize shadow-4xl">
+      <div className=" text-white  absolute  h-fit w-56 right-1 top-14 bg-[#282828] px-3 py-3 capitalize shadow-4xl" style={{zIndex:1000}}>
         <p className=" px-2 py-1 hover:bg-[#3E3D3D]">hello , {name}</p>
         <Link to="/profile">
           <p className="px-2 py-1 hover:bg-[#3E3D3D]">show profile</p>

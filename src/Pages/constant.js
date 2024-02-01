@@ -9,7 +9,7 @@ export const Problem = {
 
 export const problems = [
   {
-    id: "two-sum",
+    id:"two-sum",
     title: "Two Sum",
     difficulty: "Medium",
     category: "Array",
