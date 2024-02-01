@@ -15,6 +15,7 @@ import DOMPurify  from "dompurify";
 import ReactHtmlParser from 'react-html-parser';
 
 
+//all probelms routes
 const problemsMapping= {
   "two-sum":{...TwoSum,difficulty:"medium"},
   "flatted-linked-list":{...FaltteningALl,difficulty:"medium"},
@@ -43,9 +44,6 @@ const Problem = () => {
     problemStatement,
     examples,
     constraints,
-    handlerFunction,
-    starterCode,
-    starterFunctionName,
     difficulty
   } = selectedProblem;
 
@@ -67,17 +65,17 @@ const Problem = () => {
 
   return (
     <>
-      <div className="h-fit w-full  bg-black text-white ">
+      <div className=" h-screen w-full  bg-black text-white ">
 
-        <div className="">
-          <div className="top mt-2">
-            <h1 className="bg-[#282828] w-fit px-3 pt-1 rounded-t-xl capitalize">
+        <div className=" h-fit">
+          <div className=" top">
+            <h1 className="bg-[#282828] w-fit px-3 pt-1 mt-2 rounded-t-xl capitalize">
               description
             </h1>
           </div>
 
           {/* question part */}
-          <div className="bottom h-screen overflow-y-auto overflow-scroll  bg-[#282828] pt-3  ">
+          <div className=" h-screen overflow-y-scroll  bg-[#282828] pt-1">
             
             <div className="mx-2">
               <div className="font-bold capitalize text-lg">{title}</div>
@@ -141,13 +139,9 @@ const Problem = () => {
               </>
                 ))
               }
-             
-
-             
-             
             </div>
 
-            <div className="endSection mx-2 my-1">
+            <div className=" endSection mx-2 scroll-pb-7 ">
              {
               sanitizeAndExtractText(constraints)
              }

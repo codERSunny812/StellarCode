@@ -10,12 +10,16 @@ import { useContext } from "react";
 import { LangContext } from "../../../../Context/LangContext";
 import { useParams } from "react-router";
 
-const WriteCode = ({ fontSize }) => {
+const WriteCode = ({ fontSize , fullScreen }) => {
   const { lang } = useContext(LangContext);
   const { id } = useParams();
 
+  console.log(fullScreen);
+
   let javascriptCode, javaCode, CppCode, PythonCode;
 
+
+  // switch case for the sudo code 
   switch (id) {
     case "two-sum":
       javascriptCode = `var twoSum = function(nums, target) {
@@ -226,7 +230,7 @@ public:
   try {
     let codeMirrorProps = {
       value: "",
-      height: "300px",
+      height:fullScreen=="400px" ? "100vh" : "400px",
       theme: vscodeDark,
       extensions: [],
       onChange: (value, viewUpdate) => {
@@ -234,6 +238,8 @@ public:
       },
     };
 
+
+    // switch case for the code editor
     switch (lang) {
       case "javascript":
         codeMirrorProps = {
@@ -268,13 +274,20 @@ public:
       default:
         codeMirrorProps.value = "Please select any one language first.";
     }
+    // Set the default height
+    let height = "400px";
+
+    // Update the height if fullScreen is true
+    if (fullScreen) {
+      height = "100vh"; // Set to fullscreen height
+    }
 
     return (
       <Box>
-        <Box border={"2px solid gray"}>
+        <Box>
           <CodeMirror
             {...codeMirrorProps}
-            style={{ fontSize: `${fontSize}px` }}
+            style={{ fontSize: `${fontSize}px` , border:"2px solid red"}}
           />
         </Box>
       </Box>

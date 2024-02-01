@@ -4,7 +4,7 @@ import { IoSettings } from "react-icons/io5";
 import { FaExpandArrowsAlt } from "react-icons/fa";
 import { useState } from "react";
 
-const LanguageSelect = ({ handleSetFontSize }) => {
+const LanguageSelect = ({ handleSetFontSize , handleFullScreen }) => {
   
    const [fontDropDown,setFontDropDown] = useState(false);
 
@@ -18,6 +18,12 @@ const LanguageSelect = ({ handleSetFontSize }) => {
     // console.log(selectedFontSize)
     handleSetFontSize(selectedFontSize);
   };
+
+const handleEvent =()=>{
+  // console.log(handleFullScreen)
+  // console.log("hello")
+  handleFullScreen();
+}
   
   return (
     <>
@@ -55,7 +61,7 @@ const LanguageSelect = ({ handleSetFontSize }) => {
 
               <Tooltip label="full screen">
                 <Box as="span">
-                  <FaExpandArrowsAlt className="h-5 w-5 mx-2 cursor-pointer" />
+                  <FaExpandArrowsAlt className="h-5 w-5 mx-2 cursor-pointer" onClick={handleEvent} />
                 </Box>
               </Tooltip>
             </Flex>
