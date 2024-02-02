@@ -12,14 +12,12 @@ import { useContext, useEffect } from "react";
 import { FcBusinessman } from "react-icons/fc";
 import { useState } from "react";
 import UserStatusDropDown from "../Componets/DropDown/UserStatusDropDown";
-import { problems } from './constant'
+import { problems } from "./constant";
 
 const TopBar = ({ boolValue, isTimerVisible, handleClockStatus }) => {
   const [userState, setUserState] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
   const [currentProblemIndex, setCurrentProblemIndex] = useState(0);
-
- 
 
   // check the status of the user's
   useEffect(() => {
@@ -45,11 +43,9 @@ const TopBar = ({ boolValue, isTimerVisible, handleClockStatus }) => {
     {
       showDropDown ? setShowDropDown(false) : setShowDropDown(true);
     }
-    
+
     //  console.log(currentProblemIndex)
   };
-
-  
 
   const navigateToPrevious = () => {
     if (currentProblemIndex > 0) {
@@ -68,7 +64,7 @@ const TopBar = ({ boolValue, isTimerVisible, handleClockStatus }) => {
       <div className=" w-full bg-[#282828] sticky top-0">
         <div className="flex items-center justify-between">
           <div className="logo">
-            <Link to='/'>
+            <Link to="/">
               <img src={Logo} className="md:h-[48px] md:w-[48px] h-10" />
             </Link>
           </div>
@@ -76,7 +72,7 @@ const TopBar = ({ boolValue, isTimerVisible, handleClockStatus }) => {
           <div className=" flex items-center justify-center">
             {boolValue ? (
               <div className="flex items-center justify-center px-3 py-1">
-                <Link to={`/problems/${problems[currentProblemIndex].id}`} >
+                <Link to={`/problems/${problems[currentProblemIndex].id}`}>
                   <GrFormPrevious
                     color="white"
                     className="h-7 w-7 bg-[#464646] mx-2 rounded-sm cursor-pointer"
@@ -90,12 +86,11 @@ const TopBar = ({ boolValue, isTimerVisible, handleClockStatus }) => {
                 <h1 className="text-white capitalize px-3 font-semibold">
                   problem list
                 </h1>
-                <Link  to={`/problems/${problems[currentProblemIndex].id}`}> 
+                <Link to={`/problems/${problems[currentProblemIndex].id}`}>
                   <GrFormNext
                     color="white"
                     className="h-7 w-7 bg-[#464646] mx-2 rounded-sm cursor-pointer"
                     onClick={navigateToNext}
-
                   />
                 </Link>
               </div>

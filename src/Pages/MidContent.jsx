@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Image1, Image2, Image3, Image4 } from "../constant";
 import HomeFooter from "./HomeFooter";
 import { problems } from "./constant";
@@ -15,12 +15,9 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 const MidContent = () => {
-
   const [modalVisibile, setIsVisible] = useState(false);
   const [videoId, setVideoId] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-
-
 
   useEffect(() => {
     const checkScreenWidth = () => {
@@ -37,8 +34,6 @@ const MidContent = () => {
       window.removeEventListener("resize", checkScreenWidth);
     };
   }, []);
-
-  
 
   return (
     <>
