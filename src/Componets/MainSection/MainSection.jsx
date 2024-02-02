@@ -24,7 +24,7 @@ const Section1 = () => {
             leetcode is the best platform to help you enhance your skills,
             expand your knowledge and prepare for technical interview.{" "}
           </p>
-          <Link to="/status">
+          <Link to="/signup">
             <button className="bg-[#17807d] px-3 py-2 m-5 mb-11 rounded-full capitalize text-white hover:bg-[#0d4c4b] cursor-pointer ">
               create account <span className="p-1"> {">"} </span>{" "}
             </button>
