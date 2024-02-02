@@ -11,9 +11,6 @@ export const SessionContextProvider = (props) => {
   // if it changes to true then user has signed up
   // and show a Notification when the user logs in and logs out
 
-
-  
-
   const subscription = auth.onAuthStateChange((event, session) => {
     // console.log('Event:', event);
     if (event === "INITIAL_SESSION") {
@@ -30,8 +27,6 @@ export const SessionContextProvider = (props) => {
       setSessionState(4);
     }
   });
-
-  
 
   return (
     <SessionContext.Provider value={sessionState}>
