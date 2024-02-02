@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 const YoutubeEmbed = ({ videoId }) => {
-//   console.log(videoId);
+  //   console.log(videoId);
   return (
     <div className="video-responsive">
       <iframe
