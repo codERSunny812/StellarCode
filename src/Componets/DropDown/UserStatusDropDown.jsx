@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { auth } from "../../supabase";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserStatusDropDown = () => {
   const [name, setUserName] = useState("");
+  const homeNavigate = useNavigate();
 
   useEffect(() => {
     getUserData();
@@ -29,10 +30,13 @@ const UserStatusDropDown = () => {
       // Step 1: Sign Out from Supabase
       await auth.signOut();
 
+
       // Step 2: Remove from Local Storage
       localStorage.removeItem("supabase.auth.token");
       localStorage.removeItem("supabase.auth.expires_at");
       localStorage.removeItem("supabase.auth.refresh_token");
+
+      homeNavigate('/');
 
       // Optionally, you can redirect the user to a sign-in page or another route
       // based on your application's logic.
