@@ -1,7 +1,34 @@
-import React, { useState } from "react";
+import  { useState } from "react";
+import { auth } from "../../supabase";
 
 const ForgetPassowrd = () => {
   const [email, setEmail] = useState("");
+
+  const handleResetPassword = async()=>{
+
+    /**
+     * Step 1: Send the user an email to get a password reset token.
+     * This email contains a link which sends the user back to your application.
+     */
+    const {data , error} = await auth.resetPasswordForEmail(email);
+
+    /**
+     * Step 2: Once the user is redirected back to your application,
+     * ask the user to reset their password.
+     */
+    useEffect(() => {
+      auth.onAuthStateChange(async (event, session) => {
+        if (event == "PASSWORD_RECOVERY") {
+          const newPassword = prompt("What would you like your new password to be?");
+          const { data, error } = await supabase.auth
+            .updateUser({ password: newPassword })
+
+          if (data) alert("Password updated successfully!")
+          if (error) alert("There was an error updating your password.")
+        }
+      })
+    }, [])
+  }
   return (
     <>
       <div>
@@ -12,7 +39,7 @@ const ForgetPassowrd = () => {
             </h1>
             <hr className="border border-gray-400 w-full" />
 
-            <h2 className=" border border-yellow-300  w-[270px] h-[116px] text-center bg-yellow-100 px-4 py-4 mx-2 my-2 rounded-sm flex justify-center items-center">
+            <h2 className=" border border-yellow-300  w-[270px] h-[116px] text-center bg-yellow-100 px-4 py-4 mx-2 my-2 rounded-lg flex justify-center items-center">
               forgotten your password? enter your e-mail address below, and
               we'll send you an e-mail allowing you to reset it.
             </h2>
@@ -29,7 +56,9 @@ const ForgetPassowrd = () => {
             {email.length != 0 ?? <p>required</p>}
 
             <div className=" flex items-center w-[340px] h-[41px]">
-              <button className="capitalize py-1 px-2 rounded-md bg-green-500 text-white my-6">
+              <button className="capitalize py-1 px-2 rounded-md bg-green-500 text-white my-6"
+              onClick={handleResetPassword}
+              >
                 reset my password
               </button>
             </div>

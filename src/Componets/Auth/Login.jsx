@@ -15,16 +15,6 @@ const Login = () => {
 
   // login logic of the user
   const userLogIn = async () => {
-    
-    toast("Logging in", {
-      position: "top-center",
-      autoClose: 3000,
-      theme: "dark",
-      hideProgressBar:false,
-      draggable: true,
-      
-    });
-
     try {
       const { data, error } = await auth.signInWithPassword({
         email: userEmail,
@@ -33,13 +23,20 @@ const Login = () => {
 
       if (!error) {
         console.log(data + "user is successfully login ");
+        toast("Logging in", {
+          position: "top-center",
+          autoClose: 2000,
+          theme: "dark",
+          hideProgressBar: false,
+          draggable: true,
+        });
         //delay the navigation by 3 second
-        setTimeout(()=>{
+        setTimeout(() => {
           HomeNavigation("/problemset");
-        },3000)
-      
+        }, 3000);
       } else {
-        console.log(error);
+        toast.error("Invalid email or password");
+        return;
       }
     } catch (error) {
       console.log(error);
