@@ -285,7 +285,7 @@ public:
         <Box>
           <CodeMirror
             {...codeMirrorProps}
-            style={{ fontSize: `${fontSize}px`, border: "2px solid red" }}
+            style={{ fontSize: `${fontSize}px` }}
           />
         </Box>
       </Box>

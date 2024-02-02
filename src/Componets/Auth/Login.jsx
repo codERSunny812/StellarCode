@@ -79,6 +79,7 @@ const Login = () => {
             className="my-2 p-2 w-[340px] h-[41px]  border border-slate-200 rounded-md hover:border-black outline-orange-300 outline-offset-2"
             value={userEmail}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="off"
           />
 
           <input
@@ -87,6 +88,7 @@ const Login = () => {
             className=" my-2 p-2 w-[340px] h-[41px]  border border-slate-200 rounded-md hover:border-black  outline-orange-300 outline-offset-2"
             value={userPassword}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="off"
           />
 
           <button

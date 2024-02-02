@@ -155,6 +155,7 @@ const Signup = () => {
               setUserName(e.target.value);
               handleButtonDisable();
             }}
+            autoComplete="off"
           />
           <input
             type="email"
@@ -169,6 +170,7 @@ const Signup = () => {
               handleButtonDisable();
             }}
             id="email"
+            autoComplete="off"
           />
           <input
             type="password"
@@ -182,6 +184,7 @@ const Signup = () => {
               handleButtonDisable();
             }}
             id="password"
+            autoComplete="off"
           />
           <input
             type="password"
@@ -195,6 +198,7 @@ const Signup = () => {
               handleButtonDisable();
             }}
             id="confirmPassword"
+            autoComplete="off"
           />
           <ToastContainer />
           <button
