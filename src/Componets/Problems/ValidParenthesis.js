@@ -1,11 +1,9 @@
-// const handlerValidParenthesis = () =>{
 
-// }
 
 export const ValidParenthesis = {
-    id: 'ValidParenthesis',
-    title: '4.valid parenthesis',
-    problemStatement: `<div  class="questionSummary mx-2 my-1 font-medium text-base">
+  id: "ValidParenthesis",
+  title: "4.valid parenthesis",
+  problemStatement: `<div  class="questionSummary mx-2 my-1 font-medium text-base">
               <h1  class="px-3 my-4 ">
                 Given a string  
                 <span  class="border border-gray-600 bg-[#1b1b1b]  px-1  rounded-md text-gray-400 mx-1">
@@ -44,26 +42,26 @@ export const ValidParenthesis = {
               </h1>
 
             </div>`,
-    examples: [
-        {
-            id: 1,
-            inputText: 's = "()" ',
-            outputText: "true",
-            // explanation: "Because nums[0] + nums[1] == 9, we return [0, 1].",
-        },
-        {
-            id: 2,
-            inputText: 's = "()[]{}" ',
-            outputText: "true",
-            // explanation: "Because nums[1] + nums[2] == 6, we return [1, 2].",
-        },
-        {
-            id: 3,
-            inputText: 's = "(]" ',
-            outputText: "false",
-        },
-    ],
-    constraints: `<div  class="endSection mx-2 my-1">
+  examples: [
+    {
+      id: 1,
+      inputText: 's = "()" ',
+      outputText: "true",
+      // explanation: "Because nums[0] + nums[1] == 9, we return [0, 1].",
+    },
+    {
+      id: 2,
+      inputText: 's = "()[]{}" ',
+      outputText: "true",
+      // explanation: "Because nums[1] + nums[2] == 6, we return [1, 2].",
+    },
+    {
+      id: 3,
+      inputText: 's = "(]" ',
+      outputText: "false",
+    },
+  ],
+  constraints: `<div  class="endSection mx-2 my-1">
               <h1  class="px-3 my-4 font-bold capitalize">constraints</h1>
               <ul  class="list-disc pl-6 w-fit">
                 <li  class="my-2 border border-gray-600 bg-[#1b1b1b]  px-1  rounded-md text-gray-400 mx-1 ">
@@ -75,9 +73,5 @@ export const ValidParenthesis = {
                 <li  class="px-2 my-2 capitalize">happy coding 💻</li>
               </ul>
             </div>`,
-    // function that check that the user has the correct code or not 
-    handlerFunction:``,
-    starterCode: "",
-    order: 1,
-    starterFunctionName: "function twoSum()"
-}
+ 
+};

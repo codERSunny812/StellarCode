@@ -54,9 +54,5 @@ Flatten the Link List such that all the nodes appear in a single level while mai
                 <li  class="px-2 my-2 capitalize">happy coding 💻</li>
               </ul>
             </div>`,
-  // function that check that the user has the correct code or not
-  handlerFunction: ``,
-  starterCode: "",
-  order: 1,
-  starterFunctionName: "function twoSum()",
+  
 };

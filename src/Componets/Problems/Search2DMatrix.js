@@ -1,7 +1,7 @@
-export const Search2DMatrix={
-    id: 'Search2DMatrix',
-    title: '5.Search a 2D Matrix',
-    problemStatement: `<div  class="questionSummary mx-2 my-1 font-medium text-base">
+export const Search2DMatrix = {
+  id: "Search2DMatrix",
+  title: "5.Search a 2D Matrix",
+  problemStatement: `<div  class="questionSummary mx-2 my-1 font-medium text-base">
               <h1  class="px-3 my-4 ">
                 You are given an 
                 <span  class="border border-gray-600 bg-[#1b1b1b]  px-1  rounded-md text-gray-400 mx-1">
@@ -38,21 +38,22 @@ export const Search2DMatrix={
                  O(log(m * n))
                 </span> time complexity</h1>
             </div>`,
-    examples: [
-        {
-            id: 1,
-            inputText: "matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3",
-            outputText: "true",
-            // explanation: "Because nums[0] + nums[1] == 9, we return [0, 1].",
-        },
-        {
-            id: 2,
-            inputText: "matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13",
-            outputText: "false",
-            // explanation: "Because nums[1] + nums[2] == 6, we return [1, 2].",
-        }
-    ],
-    constraints: `<div  class="endSection mx-2 my-1">
+  examples: [
+    {
+      id: 1,
+      inputText: "matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3",
+      outputText: "true",
+      // explanation: "Because nums[0] + nums[1] == 9, we return [0, 1].",
+    },
+    {
+      id: 2,
+      inputText:
+        "matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13",
+      outputText: "false",
+      // explanation: "Because nums[1] + nums[2] == 6, we return [1, 2].",
+    },
+  ],
+  constraints: `<div  class="endSection mx-2 my-1">
               <h1  class="px-3 my-4 font-bold capitalize">constraints</h1>
               <ul  class="list-disc pl-6 w-fit">
                 <li  class="my-2 border border-gray-600 bg-[#1b1b1b]  px-1  rounded-md text-gray-400 mx-1 ">
@@ -70,9 +71,5 @@ export const Search2DMatrix={
                 <li  class="px-2 my-2 capitalize">happy coding 💻</li>
               </ul>
             </div>`,
-    // function that check that the user has the correct code or not 
-    handlerFunction: ``,
-    starterCode: "",
-    order: 1,
-    starterFunctionName: "function twoSum()"
-}
+  
+};
