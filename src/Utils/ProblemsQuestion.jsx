@@ -4,7 +4,6 @@ import Question from "../Componets/WorkSpace/Question";
 
 const ProblemsQuestion = () => {
   const [isTimerVisible, setTimerVisible] = useState(true);
-  
 
   const handleClockStatus = () => {
     isTimerVisible ? setTimerVisible(false) : setTimerVisible(true);

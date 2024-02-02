@@ -24,30 +24,28 @@ const Profile = () => {
 
   useEffect(() => {
     getUserData();
-    getName();
- 
-    // getRank();
-    // getEasyQuestion();
-    // getMediumQuestion();
-    // getHardQuestion();
-    // getTotalSolved();
-    // getStreak();
-   
-  }, []);
+  }, []); // Empty dependency array to run only once on component mount
 
- 
-       
- 
+  // Add another useEffect to watch for changes in userName and call other functions accordingly
+  useEffect(() => {
+    // Make sure userName is not empty before calling other functions
+    if (userName) {
+      getName();
+      getRank();
+      getEasyQuestion();
+      getMediumQuestion();
+      getHardQuestion();
+      getTotalSolved();
+      getStreak();
+    }
+  }, [userName]);
 
   // function to get the userName of the user
   const getUserData = async () => {
-    const data = await auth.getSession();
-    // console.log(data);
+    const data = await auth?.getSession();
     setUserName(data?.data?.session?.user?.user_metadata?.name);
-   console.log("user name is :" + userName);
+    console.log("user name is :" + userName);
   };
-
- 
 
   const getName = async () => {
     const options = {
@@ -62,7 +60,7 @@ const Profile = () => {
     try {
       const response = await axios.request(options);
       setName(response?.data);
-      console.log(" the name of the user is:" +response.data);
+      console.log(" the name of the user is:" + response.data);
     } catch (error) {
       console.error(error);
     }
@@ -80,7 +78,7 @@ const Profile = () => {
 
     try {
       const response = await axios.request(options);
-      console.log("the rank of the user is " +response?.data);
+      console.log("the rank of the user is " + response?.data);
       setRank(response.data);
     } catch (error) {
       console.error(error);
@@ -114,7 +112,7 @@ const Profile = () => {
 
     try {
       const response = await axios?.request(options);
-      console.log("the no of easy question is :"+response.data);
+      console.log("the no of easy question is :" + response.data);
       setEasyQuestion(response?.data);
     } catch (error) {
       console.error(error);
@@ -133,7 +131,7 @@ const Profile = () => {
 
     try {
       const response = await axios?.request(options);
-      console.log("the no of medium question  solved:" +response.data);
+      console.log("the no of medium question  solved:" + response.data);
       setMediumQuestion(response?.data);
     } catch (error) {
       console.error(error);
@@ -152,7 +150,7 @@ const Profile = () => {
 
     try {
       const response = await axios?.request(options);
-      console.log("the no of hard questin solved:" +response.data);
+      console.log("the no of hard questin solved:" + response.data);
       setHardQuestion(response?.data);
     } catch (error) {
       console.error(error);
@@ -171,7 +169,7 @@ const Profile = () => {
 
     try {
       const response = await axios?.request(options);
-      console.log("the total solved question "+ response.data);
+      console.log("the total solved question " + response.data);
       setTotalSolved(response?.data);
     } catch (error) {
       console.error(error);
@@ -190,7 +188,7 @@ const Profile = () => {
 
     try {
       const response = await axios.request(options);
-      console.log("streak:"+response.data);
+      console.log("streak:" + response.data);
       setStreak(response.data);
     } catch (error) {
       console.error(error);
