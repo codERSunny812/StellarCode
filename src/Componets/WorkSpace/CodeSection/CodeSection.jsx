@@ -7,25 +7,26 @@ import { useState } from "react";
 const CodeSection = () => {
   const [fontSize, setFontSize] = useState(14);
   console.log(fontSize);
-  const [fullScreen , setFullScreen] = useState(400);
+  const [fullScreen, setFullScreen] = useState(400);
 
-  const handleFullScreen = (fullScreen)=>{
-    fullScreen == 400 ? setFullScreen(100) : setFullScreen(400)
+  const handleFullScreen = (fullScreen) => {
+    fullScreen == 400 ? setFullScreen(100) : setFullScreen(400);
+  };
 
-  }
-
-  const handleSetFontSize = (font) =>{
+  const handleSetFontSize = (font) => {
     setFontSize(font);
-  }
-
+  };
 
   return (
     <>
-      <div className="h-screen overflow-y-scroll w-full  bg-black" >
+      <div className="h-screen overflow-y-scroll w-full  bg-black">
         <div className=" text-white ">
           {/* prefrence section */}
           <div className=" relative z-1 pb-1">
-            <LanguageSelect  handleSetFontSize={handleSetFontSize} handleFullScreen={handleFullScreen}  />
+            <LanguageSelect
+              handleSetFontSize={handleSetFontSize}
+              handleFullScreen={handleFullScreen}
+            />
           </div>
           {/* code editor section */}
           <Split
@@ -39,7 +40,7 @@ const CodeSection = () => {
               <WriteCode fontSize={fontSize} fullScreen={fullScreen} />
             </div>
             <div>
-              <TestCase  />
+              <TestCase />
             </div>
           </Split>
         </div>

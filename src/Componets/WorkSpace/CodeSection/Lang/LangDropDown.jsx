@@ -9,7 +9,7 @@ function classNames(...classes) {
 const LangDropDown = () => {
   // const [lang,setLang] = useState("");
   const { lang, setLang } = useContext(LangContext);
-//   console.log("LangDropDown - lang:", lang);
+  //   console.log("LangDropDown - lang:", lang);
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>

@@ -8,7 +8,7 @@ const Question = () => {
   // console.log(id);
   return (
     <Split className="split" gutterSize={13} gutterAlign="end" minSize={0}>
-      <Problem   />
+      <Problem />
       <CodeSection />
     </Split>
   );
