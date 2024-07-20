@@ -12,10 +12,8 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LangContext } from "../../Context/LangContext";
-// import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 const Signup = () => {
-  // state variables for state management
   const [userEmail, setEmail] = useState("");
   const [userPassword, setPassword] = useState("");
   const [reEnterPassword, setReEnterPassword] = useState("");
@@ -30,9 +28,6 @@ const Signup = () => {
 
   // hooks for navigation
   const HomeNavigate = useNavigate();
-
-  //hooks for the captcha
-  // const captcha = useRef()
 
   // function for user signUp
   const AuthStateHandle = async () => {
@@ -86,7 +81,7 @@ const Signup = () => {
 
     //function call for signup and state change
     await signUpNewUser();
-    HomeNavigate("/verifyuser");
+    HomeNavigate("/problemset");
   };
 
   // signup using github
@@ -132,8 +127,10 @@ const Signup = () => {
   };
 
   const signUpState = useContext(SessionContext);
+  console.log(signUpState);
   const { mail, setMail } = useContext(LangContext);
   // console.log(signUpState);
+  console.log(mail);
 
   return (
     <>
@@ -233,16 +230,21 @@ const Signup = () => {
           </h3>
 
           <h4 className="text-gray-400 my-2">our you can sign in with </h4>
+
           <div className="flex gap-5 ">
+
             <FaGithub
               className="h-7 w-7 icon-1 text-gray-600 hover:text-black my-2"
               onClick={signUpUsingGitHub}
             />
+
             <FaGooglePlus className="h-7 w-7 text-gray-600 hover:text-red-500 my-2" />
+            
             <FaLinkedin
               className="h-7 w-7 text-gray-600 hover:text-[#0A66C2] my-2"
               onClick={signUpUsingTwitter}
             />
+
           </div>
 
           <h3 className="capitalize  text-gray-400 flex-wrap text-center text-sm ">
