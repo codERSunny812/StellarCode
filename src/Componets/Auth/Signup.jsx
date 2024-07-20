@@ -214,7 +214,7 @@ const Signup = () => {
                 return; // Stop further execution
               }
 
-              // Proceed with signup logic
+         
               AuthStateHandle();
             }}
             disabled={isDisable || loading} // Disable the button when loading
