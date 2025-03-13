@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { FaBars } from "react-icons/fa6";
 import { FcAlarmClock } from "react-icons/fc";
-import Stopwatch from "../Componets/Timer/Stopwatch";
+// import Stopwatch from "../Componets/Timer/Stopwatch";
 import { auth } from "../supabase";
 import { useContext, useEffect } from "react";
 import { FcBusinessman } from "react-icons/fc";
@@ -97,10 +97,11 @@ const TopBar = ({ boolValue, isTimerVisible, handleClockStatus }) => {
             ) : null}
 
             {/* clock icon */}
-            {boolValue &&
+            {/* {boolValue &&
               (!isTimerVisible ? (
                 <Stopwatch handleClockStatus={handleClockStatus} />
-              ) : null)}
+              ) : null)
+              } */}
 
             {isTimerVisible ? (
               <FcAlarmClock onClick={handleClockStatus} className="h-6 w-6" />

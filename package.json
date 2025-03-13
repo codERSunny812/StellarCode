@@ -28,6 +28,7 @@
     "dompurify": "^3.0.8",
     "dotenv": "^16.3.1",
     "framer-motion": "^10.16.12",
+    "html-react-parser": "^5.2.2",
     "icons": "^1.0.0",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",
